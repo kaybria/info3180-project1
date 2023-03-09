@@ -6,7 +6,10 @@ This file contains the routes for your application.
 """
 
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash, session, abort
+from app import db
+from app.forms import PropertyForm
+from app.models import Property 
 
 
 ###
@@ -23,6 +26,36 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+
+@app.route("/properties/create",methods =['GET','POST'])
+def add_property():
+    propform = PropertyForm()
+
+    if request.method  == 'POST':
+        if propform.validate_on_submit():
+            title = propform.title.data
+            description = propform.description.data
+            rooms = propform.rooms.data
+            bathrooms = propform.bathrooms.data
+            price = propform.price.data
+            ptype = propform.ptype.data
+            location = propform.location.data
+            photo = form.photo.data
+            pname=secure_filename(propform.filename)
+            photo.save(os.path.join(app.config['UPLOAD_FOLDER'],pname))
+
+            newprop = Property(title,description,rooms,bathrooms,price,ptype,location,pname)
+            db.session.add(newprop)
+            db.session.commit()
+
+            flash('Property Added!','success')
+            return redirect(url_for(home))
+    else:
+        flash_errors(propform)
+    return render_template('create.html',form = propform)
+
+
+
 
 
 ###

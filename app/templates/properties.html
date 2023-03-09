@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{%block main%}
+ 
+<h1 class = "pageheader">  Properties </h1>
+<div class = "properties"> 
+    {% for property in properties%}
+    <div class = "property">
+        <img src = "{{url_for('getimages',filename = property)}}">
+        <p class = "title">{{property.title}}</p>
+        <p class = "location">{{property.location}}</p>
+    </div>
+    <p class="price">{{property.price}}</p>
+    <a href = "{{url_for('speceficproperty', pid = property.id)}}" class = "viewprop">View Property</a>
+    {%endfor%}
+</div>
+{%endblock%}
