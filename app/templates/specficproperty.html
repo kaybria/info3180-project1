@@ -1,0 +1,9 @@
+{%extends "base.html"%}
+{%block main%}
+<h1 class = "pageheader">  Properties </h1>
+ 
+ <div>
+    <img src = "{{url_for('getimages',filename = property.photo)}}">
+ </div>
+ 
+{%endblock%}

@@ -4,12 +4,13 @@ Jinja2 Documentation:    https://jinja.palletsprojects.com/
 Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file contains the routes for your application.
 """
-
+import os
 from app import app
-from flask import render_template, request, redirect, url_for, flash, session, abort
+from flask import render_template, request, redirect, url_for, flash, session, abort,send_from_directory
 from app import db
 from app.forms import PropertyForm
 from app.models import Property 
+from werkzeug.utils import secure_filename
 
 
 ###
@@ -40,8 +41,8 @@ def add_property():
             price = propform.price.data
             ptype = propform.ptype.data
             location = propform.location.data
-            photo = form.photo.data
-            pname=secure_filename(propform.filename)
+            photo = propform.photo.data
+            pname=secure_filename(photo.filename)
             photo.save(os.path.join(app.config['UPLOAD_FOLDER'],pname))
 
             newprop = Property(title,description,rooms,bathrooms,price,ptype,location,pname)
@@ -49,15 +50,26 @@ def add_property():
             db.session.commit()
 
             flash('Property Added!','success')
-            return redirect(url_for(home))
+            return redirect(url_for('view_properties'))
     else:
         flash_errors(propform)
     return render_template('create.html',form = propform)
 
+@app.route('/properties')
+def view_properties():
+    properties = Property.query.all()
+    return render_template('properties.html',properties=properties)
 
+@app.route('/uploads/<filename>')
+def getimages(filename):
+    #rootdir = os.getcwd()
+    return send_from_directory(os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER']), filename)
+@app.route('/property/<propertyid>')
+def speceficproperty(propertyid):
+    propertyid = int(propertyid)
 
-
-
+    prop = Property.query.filter_by(id=propertyid).first()
+    return render_template('speceficproperty.html',property=prop)
 ###
 # The functions below should be applicable to all Flask apps.
 ###
@@ -76,6 +88,7 @@ def send_text_file(file_name):
     """Send your static text file."""
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
+
 
 
 @app.after_request
