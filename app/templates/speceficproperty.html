@@ -1,0 +1,25 @@
+{%extends "base.html"%}
+{%block main%}
+<h1 class = "pageheader">  Properties </h1>
+ <div class = "singleprop"><div>
+    <img src = "{{url_for('getimages',filename = property.photo)}}">
+ </div>
+ <div class = "info">
+    <p class = "title">{{property.title}}</p>
+    <div class = "two">
+        <p class="price">{{property.price}}</p>
+        <p class = "type">{{property.ptype}}</p>
+    </div>
+    <p class = "description">{{property.description}}</p>
+    <div class = "two">
+        <p class="rooms">{{property.rooms}}</p>
+        <p class = "bathrooms">{{property.bathrooms}}</p>
+    </div>
+ </div>
+ <p class = "location">{{property.location}}</p>
+ <button type="submit" name="submit" class="btn btn-primary">Email Realtor</button>
+
+</div>
+ 
+ 
+{%endblock%}
