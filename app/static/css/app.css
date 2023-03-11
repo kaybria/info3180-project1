@@ -1,3 +1,143 @@
 body {
     padding-top: 5rem;
 }
+
+img{
+    width: 400px;
+    height: 400px;
+    padding:0 px;
+}
+
+.sendbutton{
+    border: 2px;
+    box-shadow: 0 0 6px;
+    border-radius: 8px;
+    justify-content: center;
+    padding: 10px 30px;
+    background-color: rgb(0, 132, 255);
+    color: antiquewhite;
+    text-align: center;
+    margin: 4px 2px;
+}
+.singleprop{
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+
+}
+
+.price{
+    border: 2px;
+    box-shadow: 0 0 6px;
+    border-radius: 8px;
+    justify-content: center;
+    padding: 2px 2px;
+    background-color: rgb(0, 132, 255);
+    color: antiquewhite;
+    text-align: center;
+    margin: 2px 2px;
+}
+.type{
+    border: 2px;
+    box-shadow: 0 0 6px;
+    border-radius: 8px;
+    justify-content: center;
+    padding: 2px 2px;
+    background-color: rgb(228, 177, 12);
+    color: antiquewhite;
+    text-align: center;
+    margin: 2px 2px;
+}
+
+.two{
+    columns: 2;
+}
+.singleprop{
+    border: 2px;
+    box-shadow: 0 0 6px;
+    border-radius: 8px;
+    justify-content: center;
+    margin: 4px 2px;
+}
+
+.info{
+    padding: 20px;
+    padding-left: 10px;
+}
+.title{
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.description{
+    padding: 10px;
+}
+i{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.properties{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: fit-content;
+    padding: 10px;
+    
+}
+.property{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 6px;
+    justify-content: center;
+}
+.properties p{
+    padding-left: 40px;
+     
+}
+ 
+
+.viewprop{
+    color: antiquewhite;
+    text-decoration: none;
+    padding-bottom: 0px;
+    background-color: rgb(0, 132, 255);
+    text-align: center;
+    padding: 15px;
+}
+.property .price{
+    border-radius: 20px;
+    justify-content: center;
+    color: antiquewhite;
+    padding: 4px 12px;
+    width: fit-content;
+    background-color: rgb(153, 0, 255);
+}
+ 
+.property .title{
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+}
+
+.property .location{
+    padding-top: 0px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-weight: lighter;
+}
+.formlabel{
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+.pageheader{
+    padding-bottom: 5px;
+}
+.input{
+    display: flex;
+    flex-direction: column;
+}
+.box{
+    column-count: 2;
+}
